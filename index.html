@@ -277,12 +277,14 @@
       function cityCertain(city) {
         city.preventDefault();
         let cityTyped = document.querySelector("#searchCity");
-        let h1 = document.querySelector("h1");
-        h1.innerHTML = cityTyped.value.toUpperCase();
-        let apiKey = "b5d468da4868eefa0bc957f375b485fb";
-        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityTyped.value}&appid=${apiKey}&units=metric`;
 
-        axios.get(apiUrl).then(showTemperature);
+        if (cityTyped.value.length > 0) {
+          let h1 = document.querySelector("h1");
+          h1.innerHTML = cityTyped.value.toUpperCase();
+          let apiKey = "b5d468da4868eefa0bc957f375b485fb";
+          let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityTyped.value}&appid=${apiKey}&units=metric`;
+          axios.get(apiUrl).then(showTemperature);
+        }
       }
 
       let certainCity = document.querySelector("#type-city");
